@@ -114,19 +114,28 @@ const CustomersScreen = () => {
         flexDirection: { xs: 'column', md: 'row' },
         justifyContent: 'space-between',
         alignItems: { xs: 'flex-start', md: 'center' },
+        width: '100%',
         gap: 2,
         mb: '1.8rem'
       }}>
-        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1f2937', fontSize: { xs: '1.3rem', sm: '2rem' } }}>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 'bold',
+            color: '#1f2937',
+            fontSize: { xs: '1.3rem', sm: '2rem', md: '1.8rem' },
+            
+          }}
+        >
           Customer Management
         </Typography>
+
         <Box
           sx={{
             display: 'flex',
-            gap: { xs: '0.5rem', sm: '1rem' }, // smaller gap on xs
-            flexWrap: 'wrap',
-            flexDirection: { xs: 'column', sm: 'row' }, // stack buttons on small screens
-            alignItems: { xs: 'stretch', sm: 'center' } // stretch buttons on xs
+            gap: { xs: '0.5rem', sm: '0.75rem' }, 
+            flexDirection: { xs: 'column', sm: 'row' },
+            alignItems: { xs: 'stretch', sm: 'center' },        
           }}
         >
           <Button
@@ -135,22 +144,32 @@ const CustomersScreen = () => {
             sx={{
               borderColor: '#10b981',
               color: '#10b981',
-              width: { xs: '165px', sm: 'auto' } // full width on xs
+              px: { xs: 1.5, sm: 2 },   // ✅ reduce horizontal padding
+              py: 0.75,                 // ✅ reduce vertical padding
+              fontSize: { xs: '0.75rem', sm: '0.85rem' }, // ✅ smaller font
+              minWidth: '130px',        // ✅ reduced width
+              whiteSpace: 'nowrap',
             }}
           >
             Import CSV
           </Button>
+
           <Button
             startIcon={<FileDownload />}
             variant="outlined"
             sx={{
               borderColor: '#10b981',
               color: '#10b981',
-              width: { xs: '165px', sm: 'auto' }
+              px: { xs: 1.5, sm: 2 },
+              py: 0.75,
+              fontSize: { xs: '0.75rem', sm: '0.85rem' },
+              minWidth: '120px',
+              whiteSpace: 'nowrap',
             }}
           >
             Export
           </Button>
+
           <Button
             startIcon={<Add />}
             variant="contained"
@@ -158,12 +177,17 @@ const CustomersScreen = () => {
             sx={{
               backgroundColor: '#10b981',
               color: 'white',
-              width: { xs: '165px', sm: 'auto' }
+              px: { xs: 1.5, sm: 2 },
+              py: 0.75,
+              fontSize: { xs: '0.75rem', sm: '0.85rem' },
+              minWidth: '140px',
+              whiteSpace: 'nowrap',
             }}
           >
             Add Customer
           </Button>
         </Box>
+
 
       </Box>
 
