@@ -69,7 +69,7 @@ const DashboardHome = () => {
           mb: '2rem',
           fontWeight: 'bold',
           color: '#1f2937',
-          fontSize: { xs: '1.3rem', sm: '2rem' }
+          fontSize: { xs: '1.5rem', sm: '2rem' }
         }}
       >
         Super Admin Dashboard

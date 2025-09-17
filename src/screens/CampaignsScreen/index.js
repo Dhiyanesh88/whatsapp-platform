@@ -113,7 +113,6 @@ const CampaignsScreen = () => {
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center',
           flexDirection: { xs: 'column', sm: 'row' }, // stack on xs
           mb: 4,
           gap: { xs: 1, sm: 0 } // spacing between stacked elements
@@ -124,8 +123,8 @@ const CampaignsScreen = () => {
           sx={{
             fontWeight: 'bold',
             color: '#1f2937',
-            fontSize: { xs: '1.3rem', sm: '2rem' },
-            textAlign: { xs: 'center', sm: 'left' }, // center on xs
+            fontSize: { xs: '1.5rem', sm: '2rem' },
+            // textAlign: { xs: 'center', sm: 'left' },
           }}
         >
           Campaign Management

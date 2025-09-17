@@ -74,17 +74,17 @@ const SettingsScreen = () => {
       </Typography>
 
       <Paper elevation={2} style={{ borderRadius: '12px' }}>
-        <Tabs 
-          value={activeTab} 
+        <Tabs
+          value={activeTab}
           onChange={(e, newValue) => setActiveTab(newValue)}
           style={{ borderBottom: '1px solid #e5e7eb' }}
           scrollButtons="auto"
           variant="scrollable"
         >
-          <Tab label="API Keys" icon={<Security />} iconPosition='start'/>
-          <Tab label="Pricing" icon={<Settings />} iconPosition='start'/>
-          <Tab label="Webhooks" icon={<Webhook />} iconPosition='start'/>
-          <Tab label="Testing Tools" icon={<Science />} iconPosition='start'/>
+          <Tab label="API Keys" icon={<Security />} iconPosition='start' />
+          <Tab label="Pricing" icon={<Settings />} iconPosition='start' />
+          <Tab label="Webhooks" icon={<Webhook />} iconPosition='start' />
+          <Tab label="Testing Tools" icon={<Science />} iconPosition='start' />
         </Tabs>
 
         {/* API Keys Tab */}
@@ -98,7 +98,7 @@ const SettingsScreen = () => {
                 startIcon={<Add />}
                 variant="contained"
                 onClick={() => setAddKeyDialog(true)}
-                sx={{ backgroundColor: '#10b981', color: 'white' ,mt:{xs:1,sm:0},alignSelf:{xs:'flex-start',sm:'flex-end'}}}
+                sx={{ backgroundColor: '#10b981', color: 'white', mt: { xs: 1, sm: 0 }, alignSelf: { xs: 'flex-start', sm: 'flex-end' } }}
               >
                 Add API Key
               </Button>
@@ -107,7 +107,7 @@ const SettingsScreen = () => {
             <TableContainer style={{ overflowX: 'auto', maxHeight: '400px', tableLayout: 'fixed' }}>
               <Table stickyHeader>
                 <TableHead>
-                  <TableRow style={{ backgroundColor: '#f8fafc',minHeight: '280px' }}>
+                  <TableRow style={{ backgroundColor: '#f8fafc', minHeight: '280px' }}>
                     <TableCell style={{ fontWeight: 'bold' }}>Name</TableCell>
                     <TableCell style={{ fontWeight: 'bold' }}>Environment</TableCell>
                     <TableCell style={{ fontWeight: 'bold' }}>Status</TableCell>
@@ -183,104 +183,104 @@ const SettingsScreen = () => {
         {/* Pricing Tab */}
         <TabPanel value={activeTab} index={1}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6}  sx={{ width:{xs: '1000px',md: '3000px' ,lg: '2000%' ,xl: '1500px'}}}></Grid>
+            <Grid item xs={12} md={6} sx={{ width: { xs: '1000px', md: '3000px', lg: '2000%', xl: '1500px' } }}></Grid>
           </Grid>
           <Box style={{ padding: '2rem' }}>
             <Box
-  display="flex"
-  justifyContent="space-between"
-  alignItems="center"
-  flexDirection={{ xs: "column", sm: "row" }} // mobile = column, desktop = row
-  gap={1.5}
-  sx={{ mb: 3 }}
->
-  <Typography variant="h6"
-  textAlign={{ xs: "center", md: "left" }} // center on mobile, left on desktop
-  >
-    Pricing Configuration
-    </Typography>
-
-  <Button
-    startIcon={<Refresh />}
-    variant="contained"
-    sx={{
-      backgroundColor: "#10b981",
-      color: "white",
-      fontSize: { xs: "0.75rem", sm: "0.875rem" },
-      px: { xs: 2, sm: 3 },
-      py: { xs: 0.75, sm: 1 },
-      minWidth: { xs: "100px", sm: "auto" },
-    }}
-    onClick={() => {
-      console.log("Sync button clicked");
-      syncPricing();
-    }}
-  >
-    Sync Meta Pricing
-  </Button>
-</Box>
-
-
-          <Grid container spacing={3}>
-  {/* Meta Pricing */}
-  <Grid item xs={12} md={6}>
-    <Paper
-      sx={{ p: 3, backgroundColor: "#f8fafc", height: "100%" ,width:{xs: '100%',md: '400px' ,lg: '540px' ,xl: '500px'}}}
-    >
-      <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
-        Meta Pricing (Base Rates)
-      </Typography>
-      <Typography variant="body2" sx={{ color: "#6b7280", mb: 2 }}>
-        Last synced: {new Date(pricing.lastSynced).toLocaleString()}
-      </Typography>
-
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        {Object.entries(pricing.rates).map(([country, rate]) => (
-          <Box
-            key={country}
-            sx={{ display: "flex", justifyContent: "space-between" }}
-          >
-            <Typography variant="body2">{country}</Typography>
-            <Typography variant="body2" sx={{ fontWeight: "bold" }}>
-              ${rate.toFixed(3)}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
-    </Paper>
-  </Grid>
-
-  {/* Distribution Pricing */}
-  <Grid item xs={12} md={6}>
-    <Paper
-      sx={{ p: 3, backgroundColor: "#f0fdf4", height: "100%" }}
-    >
-      <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
-        Distribution Pricing (Customer Rates)
-      </Typography>
-      <Typography variant="body2" sx={{ color: "#6b7280", mb: 2 }}>
-        Includes markup for platform costs
-      </Typography>
-
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-        {Object.entries(pricing.rates).map(([country, rate]) => (
-          <Box
-            key={country}
-            sx={{ display: "flex", justifyContent: "space-between" }}
-          >
-            <Typography variant="body2">{country}</Typography>
-            <Typography
-              variant="body2"
-              sx={{ fontWeight: "bold", color: "#10b981" }}
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              flexDirection={{ xs: "column", sm: "row" }} // mobile = column, desktop = row
+              gap={1.5}
+              sx={{ mb: 3 }}
             >
-              ${(rate * 1.2).toFixed(3)}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
-    </Paper>
-  </Grid>
-</Grid>
+              <Typography variant="h6"
+                textAlign={{ xs: "center", md: "left" }} // center on mobile, left on desktop
+              >
+                Pricing Configuration
+              </Typography>
+
+              <Button
+                startIcon={<Refresh />}
+                variant="contained"
+                sx={{
+                  backgroundColor: "#10b981",
+                  color: "white",
+                  fontSize: { xs: "0.75rem", sm: "0.875rem" },
+                  px: { xs: 2, sm: 3 },
+                  py: { xs: 0.75, sm: 1 },
+                  minWidth: { xs: "100px", sm: "auto" },
+                }}
+                onClick={() => {
+                  console.log("Sync button clicked");
+                  syncPricing();
+                }}
+              >
+                Sync Meta Pricing
+              </Button>
+            </Box>
+
+
+            <Grid container spacing={3}>
+              {/* Meta Pricing */}
+              <Grid item xs={12} md={6}>
+                <Paper
+                  sx={{ p: 3, backgroundColor: "#f8fafc", height: "100%", width: { xs: '100%', md: '400px', lg: '540px', xl: '500px' } }}
+                >
+                  <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                    Meta Pricing (Base Rates)
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "#6b7280", mb: 2 }}>
+                    Last synced: {new Date(pricing.lastSynced).toLocaleString()}
+                  </Typography>
+
+                  <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                    {Object.entries(pricing.rates).map(([country, rate]) => (
+                      <Box
+                        key={country}
+                        sx={{ display: "flex", justifyContent: "space-between" }}
+                      >
+                        <Typography variant="body2">{country}</Typography>
+                        <Typography variant="body2" sx={{ fontWeight: "bold" }}>
+                          ${rate.toFixed(3)}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </Paper>
+              </Grid>
+
+              {/* Distribution Pricing */}
+              <Grid item xs={12} md={6}>
+                <Paper
+                  sx={{ p: 3, backgroundColor: "#f0fdf4", height: "100%" }}
+                >
+                  <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
+                    Distribution Pricing (Customer Rates)
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: "#6b7280", mb: 2 }}>
+                    Includes markup for platform costs
+                  </Typography>
+
+                  <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+                    {Object.entries(pricing.rates).map(([country, rate]) => (
+                      <Box
+                        key={country}
+                        sx={{ display: "flex", justifyContent: "space-between" }}
+                      >
+                        <Typography variant="body2">{country}</Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{ fontWeight: "bold", color: "#10b981" }}
+                        >
+                          ${(rate * 1.2).toFixed(3)}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                </Paper>
+              </Grid>
+            </Grid>
 
           </Box>
         </TabPanel>
@@ -293,12 +293,12 @@ const SettingsScreen = () => {
             </Typography>
 
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6}  sx={{ width:{xs: '100%',md: '400px' ,lg: '540px' ,xl: '500px'}}}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '400px', lg: '540px', xl: '500px' } }}>
                 <Paper style={{ padding: '1.5rem', backgroundColor: '#f8fafc' }}>
                   <Typography variant="subtitle1" style={{ fontWeight: 'bold', marginBottom: '1rem' }}>
                     Webhook Settings
                   </Typography>
-                  
+
                   <Box style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <TextField
                       fullWidth
@@ -306,27 +306,27 @@ const SettingsScreen = () => {
                       value="https://api.platform.com/webhooks/whatsapp"
                       variant="outlined"
                     />
-                    
+
                     <FormControlLabel
                       control={<Switch defaultChecked />}
                       label="Enable webhook notifications"
                     />
-                    
+
                     <FormControlLabel
                       control={<Switch defaultChecked />}
                       label="Verify webhook signatures"
                     />
                   </Box>
                 </Paper>
-                
+
               </Grid>
 
-              <Grid item xs={12} md={6}  sx={{ width:{xs: '100%',md: '400px' ,lg: '540px' ,xl: '400px'}}}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '400px', lg: '540px', xl: '400px' } }}>
                 <Paper style={{ padding: '1.5rem', backgroundColor: '#f0fdf4', }}>
                   <Typography variant="subtitle1" style={{ fontWeight: 'bold', marginBottom: '1rem' }}>
                     Event Types
                   </Typography>
-                  
+
                   <Box style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     <FormControlLabel
                       control={<Switch defaultChecked />}
@@ -363,97 +363,97 @@ const SettingsScreen = () => {
         </TabPanel>
 
         {/* Testing Tools Tab */}
-     {/* Testing Tools Tab */}
-<TabPanel value={activeTab} index={3}>
-  <Box sx={{ p: 3 }}>
-    <Typography
-      variant="h6"
-      sx={{ fontWeight: "bold", mb: 3 }}
-    >
-      Testing & Simulation Tools
-    </Typography>
+        {/* Testing Tools Tab */}
+        <TabPanel value={activeTab} index={3}>
+          <Box sx={{ p: 3 }}>
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: "bold", mb: 3 }}
+            >
+              Testing & Simulation Tools
+            </Typography>
 
-    {/* Responsive Grid */}
-    <Grid
-      container
-      spacing={3}
-      alignItems="stretch"
-      sx={{ flexDirection: { xs: "column", md: "row-reverse", sm: "column", lg: "row" } }}
-    >
-      {/* Webhook Testing Tool (left) */}
-      <Grid
-        item
-        xs={12}
-        md={6}
-      >
-        <Paper
-          sx={{
-            p: 3,
-            backgroundColor: "#f8fafc",
-            height: "100%", // equal height
-          }}
-        >
-          <Typography
-            variant="subtitle1"
-            sx={{ fontWeight: "bold", mb: 2 }}
-          >
-            Webhook Testing Tool
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{ color: "#6b7280", mb: 2 }}
-          >
-            Simulate webhook callbacks for testing integrations
-          </Typography>
-          <Button
-            variant="contained"
-            sx={{ backgroundColor: "#10b981", color: "white" }}
-            onClick={() => setWebhookTestDialog(true)}
-          >
-            Open Webhook Tester
-          </Button>
-        </Paper>
-      </Grid>
+            {/* Responsive Grid */}
+            <Grid
+              container
+              spacing={3}
+              alignItems="stretch"
+              sx={{ flexDirection: { xs: "column", md: "row-reverse", sm: "column", lg: "row" } }}
+            >
+              {/* Webhook Testing Tool (left) */}
+              <Grid
+                item
+                xs={12}
+                md={6}
+              >
+                <Paper
+                  sx={{
+                    p: 3,
+                    backgroundColor: "#f8fafc",
+                    height: "100%", // equal height
+                  }}
+                >
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ fontWeight: "bold", mb: 2 }}
+                  >
+                    Webhook Testing Tool
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "#6b7280", mb: 2 }}
+                  >
+                    Simulate webhook callbacks for testing integrations
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: "#10b981", color: "white" }}
+                    onClick={() => setWebhookTestDialog(true)}
+                  >
+                    Open Webhook Tester
+                  </Button>
+                </Paper>
+              </Grid>
 
-      {/* Sandbox Campaign Simulator (right) */}
-      <Grid
-        item
-        xs={12}
-        md={6}
-      >
-        <Paper
-          sx={{
-            p: 3,
-            backgroundColor: "#f0fdf4",
-            height: "100%", // equal height
-          }}
-        >
-          <Typography
-            variant="subtitle1"
-            sx={{ fontWeight: "bold", mb: 2 }}
-          >
-            Sandbox Campaign Simulator
-          </Typography>
-          <Typography
-            variant="body2"
-            sx={{ color: "#6b7280", mb: 2 }}
-          >
-            Preview campaign delivery, cost estimation, and risk analysis
-          </Typography>
-          <Button
-            variant="contained"
-            sx={{ backgroundColor: "#3b82f6", color: "white" }}
-            onClick={() =>
-              window.open("https://your-simulator-url.com", "_blank")
-            }
-          >
-            Open Simulator
-          </Button>
-        </Paper>
-      </Grid>
-    </Grid>
-  </Box>
-</TabPanel>
+              {/* Sandbox Campaign Simulator (right) */}
+              <Grid
+                item
+                xs={12}
+                md={6}
+              >
+                <Paper
+                  sx={{
+                    p: 3,
+                    backgroundColor: "#f0fdf4",
+                    height: "100%", // equal height
+                  }}
+                >
+                  <Typography
+                    variant="subtitle1"
+                    sx={{ fontWeight: "bold", mb: 2 }}
+                  >
+                    Sandbox Campaign Simulator
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    sx={{ color: "#6b7280", mb: 2 }}
+                  >
+                    Preview campaign delivery, cost estimation, and risk analysis
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    sx={{ backgroundColor: "#3b82f6", color: "white" }}
+                    onClick={() =>
+                      window.open("https://your-simulator-url.com", "_blank")
+                    }
+                  >
+                    Open Simulator
+                  </Button>
+                </Paper>
+              </Grid>
+            </Grid>
+          </Box>
+        </TabPanel>
 
       </Paper>
 
@@ -462,20 +462,20 @@ const SettingsScreen = () => {
         <DialogTitle>Add New API Key</DialogTitle>
         <DialogContent>
           <Grid container spacing={2} style={{ marginTop: '0.5rem' }}>
-            <Grid item xs={12} md={6} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
               <TextField
                 fullWidth
                 label="Key Name"
                 value={newApiKey.name}
-                onChange={(e) => setNewApiKey({...newApiKey, name: e.target.value})}
+                onChange={(e) => setNewApiKey({ ...newApiKey, name: e.target.value })}
               />
             </Grid>
-            <Grid item xs={12} md={6} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
               <FormControl fullWidth>
                 <InputLabel>Environment</InputLabel>
                 <Select
                   value={newApiKey.environment}
-                  onChange={(e) => setNewApiKey({...newApiKey, environment: e.target.value})}
+                  onChange={(e) => setNewApiKey({ ...newApiKey, environment: e.target.value })}
                   label="Environment"
                 >
                   <MenuItem value="sandbox">Sandbox</MenuItem>
@@ -487,7 +487,7 @@ const SettingsScreen = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setAddKeyDialog(false)}>Cancel</Button>
-          <Button 
+          <Button
             onClick={handleAddApiKey}
             variant="contained"
             style={{ backgroundColor: '#10b981', color: 'white' }}
@@ -502,7 +502,7 @@ const SettingsScreen = () => {
         <DialogTitle>Webhook Testing Tool</DialogTitle>
         <DialogContent>
           <Grid container spacing={2} style={{ marginTop: '0.5rem' }}>
-            <Grid item xs={12} md={6} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
               <FormControl fullWidth>
                 <InputLabel>Event Type</InputLabel>
                 <Select defaultValue="delivered" label="Event Type">
@@ -512,14 +512,14 @@ const SettingsScreen = () => {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={12} md={6} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
               <TextField
                 fullWidth
                 label="Message ID"
                 value="MSG001"
               />
             </Grid>
-            <Grid item xs={12} md={6} sx={{ width:{xs: '100%',md: '20%' ,lg: '25%' ,xl: '23%'}}}>
+            <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '20%', lg: '25%', xl: '23%' } }}>
               <TextField
                 fullWidth
                 multiline
@@ -537,7 +537,7 @@ const SettingsScreen = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setWebhookTestDialog(false)}>Cancel</Button>
-          <Button 
+          <Button
             onClick={handleWebhookTest}
             variant="contained"
             style={{ backgroundColor: '#10b981', color: 'white' }}
