@@ -86,11 +86,11 @@ const FailuresScreen = () => {
 
   return (
     <Box>
-      <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-        <Typography variant="h4" style={{ fontWeight: 'bold', color: '#1f2937' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: { xs: 'flex-start', md: 'center' }, mb: 3, flexDirection: { xs: 'column', md: 'row' } }}>
+        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1f2937', mb: { xs: 2, md: 0 } }}>
           Failure Management
         </Typography>
-        <Box style={{ display: 'flex', gap: '1rem' }}>
+        <Box sx={{ display: 'flex', gap: '1rem' }}>
           <Button
             startIcon={<FileDownload />}
             variant="outlined"
@@ -109,8 +109,8 @@ const FailuresScreen = () => {
       </Box>
 
       {/* Failure Stats */}
-      <Grid container spacing={3} style={{ marginBottom: '2rem' , }}>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%' ,zxl: '23%'}}}>
+      <Grid container spacing={3} style={{ marginBottom: '2rem' }}>
+        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#ef4444' }}>
               {failures.filter(f => f.status === 'open').length}
@@ -120,7 +120,7 @@ const FailuresScreen = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%' ,lg: '23%',md: '23%' ,xl: '23%'}}}>
+        <Grid item xs={12} md={3}  sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#f59e0b' }}>
               {failures.filter(f => f.status === 'acknowledged').length}
@@ -130,7 +130,7 @@ const FailuresScreen = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={3}sx={{ width:{xs: '100%' ,lg: '23%',md: '23%' ,xl: '23%'}}}>
+        <Grid item xs={12} md={3}  sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#10b981' }}>
               {failures.filter(f => f.status === 'resolved').length}
@@ -140,7 +140,7 @@ const FailuresScreen = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%' ,lg: '23%',md: '23%' ,xl: '23%'}}}>
+        <Grid item xs={12} md={3} sx={{ width: { xs: '100%', md: '48%', lg: '23%', xl: '23%', sm: '48%' } }}>
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#3b82f6' }}>
               {((failures.filter(f => f.status === 'resolved').length / failures.length) * 100).toFixed(1)}%
@@ -155,7 +155,7 @@ const FailuresScreen = () => {
       {/* Filters */}
       <Paper elevation={2} style={{ padding: '1.5rem', marginBottom: '2rem', borderRadius: '12px' }}>
         <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={3}sx={{ width:{xs: '100%',md: '50%' ,lg: '25%' ,xl: '23%'}}}>
             <TextField
               fullWidth
               placeholder="Search by Message ID..."
