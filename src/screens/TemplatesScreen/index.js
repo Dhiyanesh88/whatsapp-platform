@@ -89,7 +89,9 @@ const TemplatesScreen = () => {
   return (
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between',flexDirection:isMobile?"column":"row", alignItems: { xs: "flex-start", md: "center" }, marginBottom: '2rem' }}>
-        <Typography variant="h4" style={{ fontWeight: 'bold', color: '#1f2937' }}>
+        <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1f2937',fontSize: { xs: '1.5rem', sm: '2rem' },
+
+ }}>
           Template Management
         </Typography>
         <Button

@@ -195,7 +195,7 @@ const SettingsScreen = () => {
   sx={{ mb: 3 }}
 >
   <Typography variant="h6"
-  textAlign={{ xs: "center", md: "left" }} // center on mobile, left on desktop
+  textAlign={{ xs: "center", md: "left", }} // center on mobile, left on desktop
   >
     Pricing Configuration
     </Typography>
