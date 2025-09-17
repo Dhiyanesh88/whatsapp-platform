@@ -105,7 +105,9 @@ const TemplatesScreen = () => {
 
       {/* Template Stats */}
       <Grid container spacing={3} style={{ marginBottom: '2rem' }}>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
+
+        <Grid item xs={12} md={3} sx={{ width:{xs: '100%', sm: '47%', md: '47%', lg: '48%'}}}>
+
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#10b981' }}>
               {templates.filter(t => t.status === 'approved').length}
@@ -115,7 +117,9 @@ const TemplatesScreen = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
+
+        <Grid item xs={12} md={3} sx={{ width:{xs: '100%', sm: '47%', md: '47%', lg: '48%'}}}>
+
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#f59e0b' }}>
               {templates.filter(t => t.status === 'pending').length}
@@ -125,7 +129,9 @@ const TemplatesScreen = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
+
+        <Grid item xs={12} md={3} sx={{ width:{xs: '100%', sm: '47%', md: '47%', lg: '48%'}}}>
+
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#ef4444' }}>
               {templates.filter(t => t.status === 'rejected').length}
@@ -135,7 +141,9 @@ const TemplatesScreen = () => {
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={3}  sx={{ width:{xs: '100%',md: '48%' ,lg: '23%' ,xl: '23%',sm:'48%'}}}>
+
+        <Grid item xs={12} md={3} sx={{ width:{xs: '100%', sm: '47%', md: '47%', lg: '48%'}}}>
+
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#3b82f6' }}>
               {templates.length}
