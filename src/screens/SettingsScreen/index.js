@@ -63,13 +63,13 @@ const SettingsScreen = () => {
 
   const TabPanel = ({ children, value, index }) => (
     <div hidden={value !== index}>
-      {value === index && <Box style={{ paddingTop: '2rem' }}>{children}</Box>}
+      {value === index && <Box style={{ paddingTop: '1.4rem' }}>{children}</Box>}
     </div>
   );
 
   return (
     <Box>
-      <Typography variant="h4" style={{ fontWeight: 'bold', color: '#1f2937', marginBottom: '2rem' }}>
+      <Typography variant="h4" sx={{ fontWeight: 'bold', color: '#1f2937', marginBottom: '2rem', fontSize: { xs: '1.5rem', sm: '2rem' } }}>
         System Settings
       </Typography>
 
@@ -77,28 +77,41 @@ const SettingsScreen = () => {
         <Tabs
           value={activeTab}
           onChange={(e, newValue) => setActiveTab(newValue)}
-          style={{ borderBottom: '1px solid #e5e7eb' }}
+          sx={{
+            borderBottom: '1px solid #e5e7eb',
+            minHeight: { xs: 36, sm: 44, md: 48 },
+            '& .MuiTab-root': {
+              minWidth: { xs: 80, sm: 100 }, // shrink for xs, expand for larger screens
+              fontSize: { xs: '0.85rem', sm: '1rem' },
+              padding: { xs: '6px 10px', sm: '10px 16px' },
+              gap: { xs: '0.3rem', sm: '0.5rem' }, // icon + label spacing
+            },
+            '& .MuiSvgIcon-root': {
+              fontSize: { xs: '1rem', sm: '1.5rem' },
+            },
+          }}
           scrollButtons="auto"
           variant="scrollable"
         >
-          <Tab label="API Keys" icon={<Security />} iconPosition='start' />
-          <Tab label="Pricing" icon={<Settings />} iconPosition='start' />
-          <Tab label="Webhooks" icon={<Webhook />} iconPosition='start' />
-          <Tab label="Testing Tools" icon={<Science />} iconPosition='start' />
+          <Tab label="API Keys" icon={<Security />} iconPosition="start" />
+          <Tab label="Pricing" icon={<Settings />} iconPosition="start" />
+          <Tab label="Webhooks" icon={<Webhook />} iconPosition="start" />
+          <Tab label="Testing Tools" icon={<Science />} iconPosition="start" />
         </Tabs>
+
 
         {/* API Keys Tab */}
         <TabPanel value={activeTab} index={0}>
-          <Box sx={{ p: 3 }}>
+          <Box sx={{ p: { xs: 2, sm: 3 } }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, mb: 3, flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 1.5, sm: 0 } }}>
-              <Typography variant="h6" style={{ fontWeight: 'bold' }}>
+              <Typography variant="h6" style={{ fontWeight: 'bold', fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>
                 API Key Management
               </Typography>
               <Button
                 startIcon={<Add />}
                 variant="contained"
                 onClick={() => setAddKeyDialog(true)}
-                sx={{ backgroundColor: '#10b981', color: 'white', mt: { xs: 1, sm: 0 }, alignSelf: { xs: 'flex-start', sm: 'flex-end' } }}
+                sx={{ backgroundColor: '#10b981', color: 'white', mt: { xs: 1, sm: 0 }, alignSelf: { xs: 'flex-start', sm: 'flex-end' }, fontSize: { xs: '0.75rem', sm: '0.875rem' }, px: { xs: 2, sm: 3 }, py: { xs: 0.75, sm: 1 }, minWidth: { xs: '120px', sm: 'auto' } }}
               >
                 Add API Key
               </Button>
@@ -223,9 +236,9 @@ const SettingsScreen = () => {
 
             <Grid container spacing={3}>
               {/* Meta Pricing */}
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', sm: '47%', md: '47%', lg: '48%' } }}>
                 <Paper
-                  sx={{ p: 3, backgroundColor: "#f8fafc", height: "100%", width: { xs: '100%', md: '400px', lg: '540px', xl: '500px' } }}
+                  sx={{ p: 3, backgroundColor: "#f8fafc", height: "100%", }}
                 >
                   <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                     Meta Pricing (Base Rates)
@@ -251,7 +264,7 @@ const SettingsScreen = () => {
               </Grid>
 
               {/* Distribution Pricing */}
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', sm: '47%', md: '47%', lg: '48%' } }}>
                 <Paper
                   sx={{ p: 3, backgroundColor: "#f0fdf4", height: "100%" }}
                 >
@@ -288,13 +301,21 @@ const SettingsScreen = () => {
         {/* Webhooks Tab */}
         <TabPanel value={activeTab} index={2}>
           <Box style={{ padding: '2rem' }}>
-            <Typography variant="h6" style={{ fontWeight: 'bold', marginBottom: '2rem' }}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 'bold',
+                mb: { xs: '1rem', sm: '2rem' },
+                fontSize: { xs: '1.1rem', sm: '1.25rem' }
+              }}
+            >
               Webhook Configuration
             </Typography>
 
+
             <Grid container spacing={3}>
-              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '400px', lg: '540px', xl: '500px' } }}>
-                <Paper style={{ padding: '1.5rem', backgroundColor: '#f8fafc' }}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', sm: '47%', md: '47%', lg: '48%', } }}>
+                <Paper sx={{ padding: '1.5rem', backgroundColor: '#f8fafc', height: '100%' }}>
                   <Typography variant="subtitle1" style={{ fontWeight: 'bold', marginBottom: '1rem' }}>
                     Webhook Settings
                   </Typography>
@@ -321,8 +342,8 @@ const SettingsScreen = () => {
 
               </Grid>
 
-              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', md: '400px', lg: '540px', xl: '400px' } }}>
-                <Paper style={{ padding: '1.5rem', backgroundColor: '#f0fdf4', }}>
+              <Grid item xs={12} md={6} sx={{ width: { xs: '100%', sm: '47%', md: '47%', lg: '48%', } }}>
+                <Paper style={{ padding: '1.5rem', backgroundColor: '#f0fdf4', height: '100%' }}>
                   <Typography variant="subtitle1" style={{ fontWeight: 'bold', marginBottom: '1rem' }}>
                     Event Types
                   </Typography>
@@ -378,13 +399,14 @@ const SettingsScreen = () => {
               container
               spacing={3}
               alignItems="stretch"
-              sx={{ flexDirection: { xs: "column", md: "row-reverse", sm: "column", lg: "row" } }}
+              sx={{ flexDirection: { xs: "column", md: "row-reverse", sm: "row", lg: "row" } }}
             >
               {/* Webhook Testing Tool (left) */}
               <Grid
                 item
                 xs={12}
                 md={6}
+                sx={{ width: { xs: '100%', sm: '47%', md: '47%', lg: '48%', } }}
               >
                 <Paper
                   sx={{
@@ -395,19 +417,39 @@ const SettingsScreen = () => {
                 >
                   <Typography
                     variant="subtitle1"
-                    sx={{ fontWeight: "bold", mb: 2 }}
+                    sx={{
+                      fontWeight: 'bold',
+                      mb: { xs: 1.5, sm: 2 }, // tighter on mobile
+                      fontSize: { xs: '1rem', sm: '1.1rem' },
+                    }}
                   >
                     Webhook Testing Tool
                   </Typography>
+
                   <Typography
                     variant="body2"
-                    sx={{ color: "#6b7280", mb: 2 }}
+                    sx={{
+                      color: '#6b7280',
+                      mb: { xs: 1.5, sm: 2 },
+                      fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                    }}
                   >
                     Simulate webhook callbacks for testing integrations
                   </Typography>
+
                   <Button
                     variant="contained"
-                    sx={{ backgroundColor: "#10b981", color: "white" }}
+                    sx={{
+                      backgroundColor: '#10b981',
+                      color: 'white',
+                      textTransform: 'none',
+                      px: { xs: 2, sm: 3 },   // padding responsive
+                      py: { xs: 0.75, sm: 1 },
+                      fontSize: { xs: '0.8rem', sm: '0.9rem' },
+                      '&:hover': {
+                        backgroundColor: '#059669', // darker green on hover
+                      },
+                    }}
                     onClick={() => setWebhookTestDialog(true)}
                   >
                     Open Webhook Tester
@@ -420,6 +462,7 @@ const SettingsScreen = () => {
                 item
                 xs={12}
                 md={6}
+                sx={{ width: { xs: '100%', sm: '47%', md: '47%', lg: '48%', } }}
               >
                 <Paper
                   sx={{
@@ -430,22 +473,41 @@ const SettingsScreen = () => {
                 >
                   <Typography
                     variant="subtitle1"
-                    sx={{ fontWeight: "bold", mb: 2 }}
+                    sx={{
+                      fontWeight: 'bold',
+                      mb: { xs: 1.5, sm: 2 }, // margin responsive
+                      fontSize: { xs: '1rem', sm: '1.1rem' },
+                    }}
                   >
                     Sandbox Campaign Simulator
                   </Typography>
+
                   <Typography
                     variant="body2"
-                    sx={{ color: "#6b7280", mb: 2 }}
+                    sx={{
+                      color: '#6b7280',
+                      mb: { xs: 1.5, sm: 2 },
+                      fontSize: { xs: '0.85rem', sm: '0.9rem' },
+                    }}
                   >
                     Preview campaign delivery, cost estimation, and risk analysis
                   </Typography>
+
                   <Button
                     variant="contained"
-                    sx={{ backgroundColor: "#3b82f6", color: "white" }}
-                    onClick={() =>
-                      window.open("https://your-simulator-url.com", "_blank")
-                    }
+                    sx={{
+                      backgroundColor: '#3b82f6',
+                      color: 'white',
+                      textTransform: 'none',
+                      px: { xs: 2, sm: 3 },   // padding responsive
+                      py: { xs: 0.75, sm: 1 },
+                      fontSize: { xs: '0.8rem', sm: '0.9rem' },
+                      '&:hover': {
+                        backgroundColor: '#2563eb', // slightly darker blue on hover
+                      },
+                      
+                    }}
+                    onClick={() => window.open('https://your-simulator-url.com', '_blank')}
                   >
                     Open Simulator
                   </Button>
