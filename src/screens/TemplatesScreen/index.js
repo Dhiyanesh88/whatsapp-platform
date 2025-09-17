@@ -21,7 +21,8 @@ import {
   MenuItem,
   Select,
   FormControl,
-  InputLabel
+  InputLabel,useTheme, useMediaQuery
+
 } from '@mui/material';
 import {
   Sync,
@@ -39,6 +40,8 @@ const TemplatesScreen = () => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [environmentFilter, setEnvironmentFilter] = useState('all');
   const [syncing, setSyncing] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const filteredTemplates = templates.filter(template => {
     const matchesSearch = template.name.toLowerCase().includes(searchTerm.toLowerCase());
@@ -85,7 +88,7 @@ const TemplatesScreen = () => {
 
   return (
     <Box>
-      <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between',flexDirection:isMobile?"column":"row", alignItems: { xs: "flex-start", md: "center" }, marginBottom: '2rem' }}>
         <Typography variant="h4" style={{ fontWeight: 'bold', color: '#1f2937' }}>
           Template Management
         </Typography>
@@ -94,7 +97,7 @@ const TemplatesScreen = () => {
           variant="contained"
           onClick={handleSync}
           disabled={syncing}
-          style={{ backgroundColor: '#10b981', color: 'white' }}
+          style={{ backgroundColor: '#10b981', color: 'white', minWidth: 150, height: 40, textTransform: 'none',margin:10 }}
         >
           {syncing ? 'Syncing...' : 'Sync Templates'}
         </Button>
@@ -102,7 +105,9 @@ const TemplatesScreen = () => {
 
       {/* Template Stats */}
       <Grid container spacing={3} style={{ marginBottom: '2rem' }}>
+
         <Grid item xs={12} md={3} sx={{ width:{xs: '100%', sm: '47%', md: '47%', lg: '48%'}}}>
+
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#10b981' }}>
               {templates.filter(t => t.status === 'approved').length}
@@ -112,7 +117,9 @@ const TemplatesScreen = () => {
             </Typography>
           </Paper>
         </Grid>
+
         <Grid item xs={12} md={3} sx={{ width:{xs: '100%', sm: '47%', md: '47%', lg: '48%'}}}>
+
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#f59e0b' }}>
               {templates.filter(t => t.status === 'pending').length}
@@ -122,7 +129,9 @@ const TemplatesScreen = () => {
             </Typography>
           </Paper>
         </Grid>
+
         <Grid item xs={12} md={3} sx={{ width:{xs: '100%', sm: '47%', md: '47%', lg: '48%'}}}>
+
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#ef4444' }}>
               {templates.filter(t => t.status === 'rejected').length}
@@ -132,7 +141,9 @@ const TemplatesScreen = () => {
             </Typography>
           </Paper>
         </Grid>
+
         <Grid item xs={12} md={3} sx={{ width:{xs: '100%', sm: '47%', md: '47%', lg: '48%'}}}>
+
           <Paper elevation={2} style={{ padding: '1.5rem', borderRadius: '12px', textAlign: 'center' }}>
             <Typography variant="h3" style={{ fontWeight: 'bold', color: '#3b82f6' }}>
               {templates.length}
@@ -147,7 +158,7 @@ const TemplatesScreen = () => {
       {/* Filters */}
       <Paper elevation={2} style={{ padding: '1.5rem', marginBottom: '2rem', borderRadius: '12px' }}>
         <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={3}>
             <TextField
               fullWidth
               placeholder="Search templates..."
@@ -158,7 +169,7 @@ const TemplatesScreen = () => {
               }}
             />
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '21%' ,lg: '24%' ,xl: '22%'}}}>
             <FormControl fullWidth>
               <InputLabel>Status</InputLabel>
               <Select
@@ -174,7 +185,7 @@ const TemplatesScreen = () => {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={12} md={3}>
+          <Grid item xs={12} md={3} sx={{ width:{xs: '100%',md: '21%' ,lg: '24%' ,xl: '22%'}}}>
             <FormControl fullWidth>
               <InputLabel>Environment</InputLabel>
               <Select
@@ -271,20 +282,20 @@ const TemplatesScreen = () => {
                       />
                     </TableCell>
                     <TableCell>
-                      <Box style={{ display: 'flex', gap: '0.25rem' }}>
+                      <Box style={{ display: 'flex', gap: '1rem' }}>
                         {template.status === 'pending' && (
                           <>
                             <IconButton 
                               size="small"
-                              onClick={() => handleApprove(template.id)}
-                              style={{ color: '#10b981' }}
+                              style={{ width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#10b981' }}
+
                             >
                               <CheckCircle />
                             </IconButton>
                             <IconButton 
                               size="small"
                               onClick={() => handleReject(template.id)}
-                              style={{ color: '#ef4444' }}
+                              style={{ width: 36, height: 36, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ef4444' }}
                             >
                               <Cancel />
                             </IconButton>
