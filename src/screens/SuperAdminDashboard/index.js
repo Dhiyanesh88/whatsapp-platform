@@ -244,7 +244,7 @@ const SuperAdminDashboard = () => {
           flexGrow: 1,
           padding: '88px 24px 24px 24px',
           backgroundColor: '#f8fafc',
-          height: "clamp(90vh, 105vh, 140vh)",
+          height: "clamp(110vh, 100%, 140vh)",
           overflowY: "auto",
           boxSizing: "border-box",
         }}
