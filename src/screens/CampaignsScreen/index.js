@@ -95,7 +95,12 @@ const CampaignsScreen = () => {
       default: return '#6b7280';
     }
   };
-
+  const stats = [
+    { value: '25', label: 'Active Campaigns', color: '#10b981' },
+    { value: '12,500', label: 'Messages Sent', color: '#3b82f6' },
+    { value: '11,800', label: 'Delivered', color: '#10b981' },
+    { value: '700', label: 'Failed', color: '#ef4444' },
+  ];
   const getDeliveryRate = (campaign) => {
     const total = campaign.sent || 0;
     const delivered = campaign.delivered || 0;
@@ -144,139 +149,42 @@ const CampaignsScreen = () => {
       </Box>
 
 
-      {/* Campaign Stats */}
       <Grid container spacing={3} sx={{ mb: '2rem' }}>
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={3}
-          sx={{
-            width: { xs: '100%', sm: '100%', md: '47%', lg: '48%' },
-          }}
-        >
-          <Paper
-            elevation={2}
-            sx={{ p: '1.5rem', borderRadius: '12px', textAlign: 'center' }}
+        {stats.map((stat, index) => (
+          <Grid
+            item
+            xs={12}
+            sm={6}
+            md={3}
+            key={index}
+            sx={{
+              width: { xs: '100%', sm: '47%', md: '47%', lg: '48%' },
+            }}
           >
-            <Typography
-              sx={{
-                fontWeight: 'bold',
-                color: '#10b981',
-                fontSize: { xs: '1.75rem', sm: '2.3rem' }, // responsive size
-              }}
+            <Paper
+              elevation={2}
+              sx={{ p: '1.5rem', borderRadius: '12px', textAlign: 'center' }}
             >
-              {campaigns.filter(c => c.status === 'active').length}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#6b7280',
-                fontSize: { xs: '0.75rem', sm: '0.875rem' }, // responsive size
-              }}
-            >
-              Active Campaigns
-            </Typography>
-          </Paper>
-        </Grid>
-
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={3}
-          sx={{
-            width: { xs: '100%', sm: '100%', md: '47%', lg: '48%' },
-          }}
-        >
-          <Paper
-            elevation={2}
-            sx={{ p: '1.5rem', borderRadius: '12px', textAlign: 'center' }}
-          >
-            <Typography
-              sx={{
-                fontWeight: 'bold',
-                color: '#3b82f6',
-                fontSize: { xs: '1.75rem', sm: '2.3rem' },
-              }}
-            >
-              {campaigns.reduce((sum, c) => sum + (c.sent || 0), 0).toLocaleString()}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#6b7280',
-                fontSize: { xs: '0.75rem', sm: '0.875rem' },
-              }}
-            >
-              Messages Sent
-            </Typography>
-          </Paper>
-        </Grid>
-
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={3}
-          sx={{
-            width: { xs: '100%', sm: '100%', md: '47%', lg: '48%' },
-          }}
-        >
-          <Paper
-            elevation={2}
-            sx={{ p: '1.5rem', borderRadius: '12px', textAlign: 'center' }}
-          >
-            <Typography
-              sx={{
-                fontWeight: 'bold',
-                color: '#10b981',
-                fontSize: { xs: '1.75rem', sm: '2.3rem' },
-              }}
-            >
-              {campaigns.reduce((sum, c) => sum + (c.delivered || 0), 0).toLocaleString()}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#6b7280',
-                fontSize: { xs: '0.75rem', sm: '0.875rem' },
-              }}
-            >
-              Delivered
-            </Typography>
-          </Paper>
-        </Grid>
-
-        <Grid
-          item
-          xs={12}
-          sm={6}
-          md={3}
-          sx={{
-            width: { xs: '100%', sm: '100%', md: '47%', lg: '48%' },
-          }}
-        >
-          <Paper
-            elevation={2}
-            sx={{ p: '1.5rem', borderRadius: '12px', textAlign: 'center' }}
-          >
-            <Typography
-              sx={{
-                fontWeight: 'bold',
-                color: '#ef4444',
-                fontSize: { xs: '1.75rem', sm: '2.3rem' },
-              }}
-            >
-              {campaigns.reduce((sum, c) => sum + (c.failed || 0), 0)}
-            </Typography>
-            <Typography
-              sx={{
-                color: '#6b7280',
-                fontSize: { xs: '0.75rem', sm: '0.875rem' },
-              }}
-            >
-              Failed
-            </Typography>
-          </Paper>
-        </Grid>
+              <Typography
+                sx={{
+                  fontWeight: 'bold',
+                  color: stat.color,
+                  fontSize: { xs: '1.75rem', sm: '2.3rem' },
+                }}
+              >
+                {stat.value}
+              </Typography>
+              <Typography
+                sx={{
+                  color: '#6b7280',
+                  fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                }}
+              >
+                {stat.label}
+              </Typography>
+            </Paper>
+          </Grid>
+        ))}
       </Grid>
 
 
